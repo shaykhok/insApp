@@ -6,11 +6,22 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
+    <!--<ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-    </ion-list>
+    </ion-list>-->
+    <ion-list>
+      <button ion-item menuClose (click)="openClass()">
+          My Class
+      </button>
+      <button ion-item menuClose (click)="assignNewWorkout()">     
+          Assign New Workout
+      </button>
+      <button ion-item menuClose (click)="appLogout()">
+          Sign Out
+      </button>
+     </ion-list>
   </ion-content>
 
 </ion-menu>

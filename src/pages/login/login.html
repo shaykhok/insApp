@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Instructor Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="login.username" name="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="login.password" name="password"></ion-input>
+      </ion-item>
+      <ion-input [hidden]="true" ></ion-input> <!-- fixes line spacing issue on last line of list -->
+
+    </ion-list>
+
+    <div padding>
+      <button ion-button color="primary" block (click) = 'instructorLogin();'>Sign In</button>
+    </div>
+    <div style="text-align: center">
+      <button ion-button clear (click) = 'signUp();'>Sign Up</button>
+    </div>
+
+</ion-content> -->
+
+<!-- <ion-header>
+	<ion-navbar color="primary">
+		<ion-title text-center>
+			Searching
+		</ion-title>
+	</ion-navbar>
+	<ion-toolbar color="primary">	
+		<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterItems()">
+		</ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content no-padding>
+	<ion-grid ion-fixed no-padding>
+		<ion-list  style="position: absolute;z-index:1;width:100%;">
+			<ion-item *ngFor=" let item of filtereditems" color="silver" >
+				{{item.title}}
+                        <button ion-button clear (click) = 'signUp();'>Sign Up</button>
+			</ion-item>
+		</ion-list>
+	</ion-grid>
+	<ion-grid >
+		<ion-card>
+			<img src="assets/imgs/background.png" />
+			<ion-card-content>
+				<ion-card-title>
+					Nine Inch Nails Live
+				</ion-card-title>
+				<p>
+					The most popular industrial group ever, and largely
+					responsible for bringing the music to a mass audience.
+				</p>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card>
+			<img src="assets/imgs/background.png" />
+			<ion-card-content>
+				<ion-card-title>
+					Nine Inch Nails Live
+				</ion-card-title>
+				<p>
+					The most popular industrial group ever, and largely
+					responsible for bringing the music to a mass audience.
+				</p>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card>
+			<img src="assets/imgs/background.png" />
+			<ion-card-content>
+				<ion-card-title>
+					Nine Inch Nails Live
+				</ion-card-title>
+				<p>
+					The most popular industrial group ever, and largely
+					responsible for bringing the music to a mass audience.
+				</p>
+			</ion-card-content>
+		</ion-card>
+
+	</ion-grid> 
+	
+</ion-content> -->

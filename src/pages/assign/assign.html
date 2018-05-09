@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Assign Workout</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<h4>Enter Squat Workout Information:</h4>
+
+<ion-list>
+
+  <ion-item>
+    <ion-label>Workout Title:</ion-label>
+    <ion-input type="text" [(ngModel)]="workout.title" name="title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Number of Sets:</ion-label>
+    <ion-input type="text" [(ngModel)]="workout.sets" name="sets"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Reps Per Set:</ion-label>
+    <ion-input type="text" [(ngModel)]="workout.repsPerSet" name="repsPerSet"></ion-input>
+  </ion-item>
+  <ion-input [hidden]="true" ></ion-input> <!-- fixes line spacing issue on last line of list -->
+
+</ion-list>
+
+<h4>Participants:</h4>
+
+    <ion-list>
+
+        <ion-item-sliding *ngFor="let athlete of selectedAthletes">
+            <ion-item>
+                {{athlete.username}}
+            </ion-item>
+
+            <ion-item-options>
+                <button ion-button icon-only (click)="deleteAthlete(athlete)" color="danger">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterAthletes()" placeholder="Search to Add Participants"></ion-searchbar>
+
+<ion-list>
+
+<button detail-none (click)="addAthlete(athlete)" ion-item *ngFor="let athlete of filteredAthletes">
+   Add {{athlete.username}} to workout
+</button>
+</ion-list>
+
+<br>
+
+<button ion-button block (click)="sendWorkout();">Assign Workout</button>
+
+</ion-content>

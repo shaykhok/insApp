@@ -4,7 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { ClassPage } from '../pages/class/class';
+import { AssignPage } from '../pages/assign/assign';
+import { AthletePage } from '../pages/athlete/athlete';
+import { PastWorkoutPage } from '../pages/pastWorkout/pastWorkout';
+
+import { ModalAddAthletePage } from '../pages/modalAddAthlete/modalAddAthlete';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +19,7 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -22,7 +29,14 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Login', component: LoginPage },
+      { title: 'Signup', component: SignupPage },
+      { title: 'Class', component: ClassPage },
+      { title: 'Assign', component: AssignPage },
+      { title: 'Athlete', component: AthletePage },
+{ title: 'ModalAddAthlete', component: ModalAddAthletePage },
+
+      { title: 'PastWorkout', component: PastWorkoutPage }
     ];
 
   }
@@ -36,9 +50,17 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+  openClass(){
+    this.nav.setRoot(ClassPage);
   }
+
+  assignNewWorkout(){
+    //also would like to alert them that 
+    this.nav.push(AssignPage);
+  }
+
+  appLogout(){
+    this.nav.setRoot(LoginPage);
+  }
+
 }

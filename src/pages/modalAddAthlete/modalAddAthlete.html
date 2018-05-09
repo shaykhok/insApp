@@ -1,0 +1,57 @@
+<ion-header>
+
+<ion-navbar>
+    <ion-title>Add Athlete</ion-title>
+    <ion-buttons end>
+    <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+</ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<h4>Participants In Workout:</h4>
+
+    <ion-list>
+
+            <ion-item *ngFor="let athlete of athletesInWorkout">
+                {{athlete.username}}
+            </ion-item>
+
+    </ion-list>
+
+<h4>Participants To Add:</h4>
+
+    <ion-list>
+
+        <ion-item-sliding *ngFor="let athleteToAdd of selectedAthletes">
+            <ion-item>
+                {{athleteToAdd.username}}
+            </ion-item>
+
+            <ion-item-options>
+                <button ion-button icon-only (click)="deleteAthlete(athleteToAdd)" color="danger">
+                    <ion-icon name="close"></ion-icon>
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterAthletes()" placeholder="Search to Add Participants"></ion-searchbar>
+
+<ion-list>
+
+<button detail-none (click)="addAthlete(athlete)" ion-item *ngFor="let athlete of filteredAthletes">
+   Add {{athlete.username}} to workout
+</button>
+</ion-list>
+
+<br>
+
+<ion-buttons>
+   <button ion-button block color="secondary" (click)="assignToAthletes()">Add Participants To Workout</button>
+</ion-buttons>
+
+</ion-content>

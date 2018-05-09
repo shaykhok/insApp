@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Class</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<ion-list>
+      <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
+        <ion-thumbnail item-start>
+        <img src="assets/imgs/profile.png">
+        </ion-thumbnail>
+        <h2>{{item.athleteID}}</h2>
+        <p>Workout Progress • {{item.workoutStatus}}</p>
+    <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
+
+
+        <ion-list>
+          <ion-item text-wrap *ngFor="let set of item.workout; let setIndex = index">
+             <ng-container *ngFor="let setKey of objectKeys(set)">
+                 <p>{{'Set ' + (setIndex+1) + ':'}}</p>
+                                   <ng-container *ngFor="let repetitions of objectKeys(set[setKey]); let repIndex = index">
+                                             <ng-container *ngIf="set[setKey][repIndex].rep === '0'">
+                                                 <div class="unattempted">
+                                                    <ng-container *ngIf="(repIndex+1) < 10">
+                                                       {{repIndex+1}}
+                                                    </ng-container>
+                                                    <ng-container *ngIf="(repIndex+1) >= 10">
+                                                       <div class="innerCircle">{{repIndex+1}}</div>
+                                                    </ng-container>
+                                                 </div>
+                                             </ng-container>
+                                             <ng-container *ngIf="set[setKey][repIndex].rep === '1'">
+                                                 <div class="failed">
+                                                    <ng-container *ngIf="(repIndex+1) < 10">
+                                                       {{repIndex+1}}
+                                                    </ng-container>
+                                                    <ng-container *ngIf="(repIndex+1) >= 10">
+                                                       <div class="innerCircle">{{repIndex+1}}</div>
+                                                    </ng-container>
+                                                 </div>
+                                             </ng-container>
+                                             <ng-container *ngIf="set[setKey][repIndex].rep === '2'">
+                                                 <div class="completed">
+                                                    <ng-container *ngIf="(repIndex+1) < 10">
+                                                       {{repIndex+1}}
+                                                    </ng-container>
+                                                    <ng-container *ngIf="(repIndex+1) >= 10">
+                                                       <div class="innerCircle">{{repIndex+1}}</div>
+                                                    </ng-container>
+                                                 </div>
+                                             </ng-container>
+                                      </ng-container>
+             </ng-container>
+          </ion-item>
+        </ion-list>
+    </expandable>
+        <button ion-button clear (click)="itemTapped($event, item)" item-end>Details</button>
+      </button>
+</ion-list>
+
+<!-- <ion-buttons>
+   <button ion-button block color="secondary" (click)="addAthlete()">Add Participant</button>
+</ion-buttons> -->
+
+<ion-buttons>
+   <button ion-button block color="secondary" (click)="openAddAthleteModal()">Add Participants</button>
+</ion-buttons>
+
+<ion-buttons>
+   <button ion-button block (click)="refreshPage()">Refresh Page</button>
+</ion-buttons>
+
+<!-- <ion-list>
+ <ion-item>
+ <ion-label floating>Username</ion-label>
+ <ion-input type="text" name="username" [(ngModel)]="data.username"></ion-input>
+ </ion-item>
+
+ <button ion-button block (click)="submit()">Submit to server</button>
+ </ion-list>
+
+ <ion-card>
+ <ion-card-header>
+ Response
+ </ion-card-header>
+
+ <ion-card-content>
+ <b>{{data.response}}</b>
+ </ion-card-content>
+ </ion-card> -->
+
+</ion-content>
